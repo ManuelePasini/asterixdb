@@ -281,7 +281,7 @@ public class NodeControllerService implements IControllerService {
     @Override
     public void start() throws Exception {
         LOGGER.log(Level.INFO, "Starting NodeControllerService");
-        ipc = new IPCSystem(new InetSocketAddress(ncConfig.getClusterListenAddress(), ncConfig.getClusterListenPort()),
+        ipc = new IPCSystem(new InetSocketAddress(ncConfig.getClusterPublicAddress() , ncConfig.getClusterListenPort()),
                 networkSecurityManager.getSocketChannelFactory(), new NodeControllerIPCI(this),
                 new CCNCFunctions.SerializerDeserializer());
         ipc.start();
